@@ -1,3 +1,10 @@
 <h1>Page!</h1>
 
 <p>This is the page</p>
+
+<form action="/zerobias/" method="post">
+    {% csrf_token %}
+    {{ form }}
+    <br>
+    <input type="submit" value="Rate">
+</form>
