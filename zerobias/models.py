@@ -15,5 +15,3 @@ class Highlight(models.Model):
     reason = models.ForeignKey(Reason, on_delete=models.CASCADE)
     def __str__(self):
         return self.key
-    def __str__(self):
-        return self.suggestions
