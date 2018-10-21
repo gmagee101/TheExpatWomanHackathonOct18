@@ -1,9 +1,47 @@
-<h1>Analysis!</h1>
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+* {
+    box-sizing: border-box;
+}
 
-Here we show an analysis of the input text:
+/* Create two equal columns that floats next to each other */
+.column {
+    float: left;
+    width: 50%;
+    padding: 10px;
+    height: 300px; /* Should be removed. Only for demonstration */
+}
 
-<p>{{ input_text | safe }}</p>
+/* Clear floats after the columns */
+.row:after {
+    content: "";
+    display: table;
+    clear: both;
+}
+</style>
+</head>
+<body>
+  <h1>Analysis!</h1>
 
-Here are the problematic words:
+<h2>Two Equal Columns</h2>
 
-<p>{{ output_dict }}</p>
+<div class="row">
+  <div class="column" style="background-color:#aaa;">
+    <h2>Column 1</h2>
+    Here we show an analysis of the input text:
+
+    <p>{{ input_text | safe }}</p>
+  </div>
+  <div class="column" style="background-color:#bbb;">
+    <h2>Column 2</h2>
+    Here are the problematic words:
+
+    <p>{{ output_dict }}</p>
+  </div>
+</div>
+
+</body>
+</html>
