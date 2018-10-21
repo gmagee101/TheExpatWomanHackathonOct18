@@ -1,7 +1,8 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
 <style>
 * {
     box-sizing: border-box;
@@ -11,7 +12,7 @@
 .column {
     float: left;
     width: 50%;
-    padding: 10px;
+    padding: 20px;
     height: 300px; /* Should be removed. Only for demonstration */
 }
 
@@ -24,24 +25,50 @@
 </style>
 </head>
 <body>
-  <h1>Analysis!</h1>
-
-<h2>Two Equal Columns</h2>
+  <h1>Analysis</h1>
 
 <div class="row">
   <div class="column" style="background-color:#aaa;">
-    <h2>Column 1</h2>
-    Here we show an analysis of the input text:
+      Here is the text you input:
 
     <p>{{ input_text | safe }}</p>
   </div>
   <div class="column" style="background-color:#bbb;">
     <h2>Column 2</h2>
-    Here are the problematic words:
+    Here are some problematic words:
 
-    <p>{{ output_dict }}</p>
+    <table class='table'>
+        <thead>
+            <tr>
+                <th>
+                    highlighted word
+                </th>
+                <th>
+                    suggested replacement
+                </th>
+                <th>
+                    reasoning
+                </th>
+            </tr>
+        </thead>
+    {% for key, value in output_dict.items %}
+        <tr>
+            <td>
+                {{ value.0.0.key }}
+            </td>
+            <td>
+                {{ value.0.0.suggestions }}
+            </td>
+            <td>
+                {{ value.0.0.reason }}
+            </td>
+        </tr>
+    {% endfor %}
+    </table>
   </div>
 </div>
 
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js">
+</script>
 </body>
 </html>
